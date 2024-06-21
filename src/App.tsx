@@ -1,5 +1,6 @@
-import { Box, Typography } from '@mui/material';
 import React from 'react';
+import { Box, Typography } from '@mui/material';
+import InvestorListGrid from './components/InvestorListGrid';
 
 function App() {
   return (
@@ -7,15 +8,7 @@ function App() {
       <Typography variant='h2' component='h2' align='center' color={'blue'}>
         Investor Analysis
       </Typography>
-      <Box
-        sx={{
-          paddingLeft: '20px',
-          marginBottom: '10px',
-        }}>
-        <Typography variant='h6' component='h6' align='center'>
-          Investor Grid
-        </Typography>
-      </Box>
+      <InvestorListGrid />
     </Box>
   );
 }
