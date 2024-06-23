@@ -60,12 +60,13 @@ export function InvestorDetails({
         />
         <Box sx={{ minWidth: 220, ml: '20px', mb: '10px' }}>
           <FormControl>
-            <InputLabel id='asset classes'>Asset Classes</InputLabel>
+            <InputLabel id='asset-classes-label'>Asset Classes</InputLabel>
             <Select
               labelId='asset-classes'
               id='asset-classes'
               value={assetClass}
               label='Asset Classes'
+              aria-labelledby='asset-classes-label'
               onChange={e => {
                 setAssetClass(e.target.value);
               }}>
