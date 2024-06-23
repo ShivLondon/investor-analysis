@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import InvestorListGrid from './components/InvestorListGrid';
+import { InvestorListGrid } from './components/InvestorListGrid';
 
 function App() {
   return (

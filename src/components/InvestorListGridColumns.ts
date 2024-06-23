@@ -1,4 +1,4 @@
-const InvestorListGridColumns = (
+export const InvestorListGridColumns = (
   onRowClickInvestorDetails: (params: any) => void
 ) => {
   return [
@@ -13,6 +13,8 @@ const InvestorListGridColumns = (
     {
       headerName: 'FirmName',
       field: 'firm_name',
+      filter: true,
+      floatingFilter: true,
       flex: 1.5,
       onCellClicked: onRowClickInvestorDetails,
     },
@@ -47,4 +49,5 @@ const InvestorListGridColumns = (
     },
   ];
 };
-export default InvestorListGridColumns;
+
+export const INVESTOR_LIST_URL = 'http://localhost:8000/api/investors';

@@ -1,6 +1,6 @@
-const fetchAllInvestorsData = async () => {
+const fetchAllInvestorsData = async (url: string) => {
   try {
-    const response = await fetch('http://localhost:8000/api/investors');
+    const response = await fetch(url);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }

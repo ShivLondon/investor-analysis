@@ -4,24 +4,22 @@ import { Box } from '@mui/material';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import { ColDef } from 'ag-grid-community';
-import InvestorListGridColumns from './InvestorListGridColumns';
+import {
+  INVESTOR_LIST_URL,
+  InvestorListGridColumns,
+} from './InvestorListGridColumns';
 import fetchAllInvestorsData from '../utils/fetchAllInvestorsData';
+import { InvestorDetails } from './InvestorDetails';
+import { Investor } from '../types/InvestorsTypes';
 
-type Investor = {
-  firm_id: number;
-  firm_name: string;
-  firm_type: string;
-  date_added: string;
-  address: string;
-  country: string;
-  postal_code: string;
-};
-const InvestorListGrid = () => {
+export const InvestorListGrid = () => {
   const [investors, setInvestors] = useState<Investor[]>([]);
   const [open, setOpen] = useState(false);
-  const [selectedInvestor, setSelectedInvestor] = useState<Investor | {}>({});
+  const [selectedInvestor, setSelectedInvestor] = useState<Investor>();
   useEffect(() => {
-    fetchAllInvestorsData().then(setInvestors).catch(console.error);
+    fetchAllInvestorsData(INVESTOR_LIST_URL)
+      .then(setInvestors)
+      .catch(console.error);
   }, []);
   const onRowClickInvestorDetails = (params: any) => {
     setSelectedInvestor(params.data);
@@ -30,7 +28,7 @@ const InvestorListGrid = () => {
 
   return (
     <>
-      <Box className='ag-theme-alpine' sx={{ width: '100%', height: '84vh' }}>
+      <Box className='ag-theme-alpine' sx={{ width: '100%', height: '90vh' }}>
         <AgGridReact
           rowData={investors}
           columnDefs={
@@ -38,7 +36,11 @@ const InvestorListGrid = () => {
           }
         />
       </Box>
+      <InvestorDetails
+        open={open}
+        setOpen={setOpen}
+        selectedInvestor={selectedInvestor}
+      />
     </>
   );
 };
-export default InvestorListGrid;
